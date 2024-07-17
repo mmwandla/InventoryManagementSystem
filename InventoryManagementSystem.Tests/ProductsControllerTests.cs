@@ -14,10 +14,7 @@ namespace InventoryManagementSystem.Tests
 
         public ProductsControllerTests(WebApplicationFactory<Program> factory)
         {
-            _client = factory.WithWebHostBuilder(builder =>
-            {
-                builder.UseContentRoot(GetProjectPath());
-            }).CreateClient();
+           
         }
 
         [Fact]
@@ -58,25 +55,6 @@ namespace InventoryManagementSystem.Tests
             var response = await _client.DeleteAsync("/api/products/1");
 
             response.EnsureSuccessStatusCode();
-        }
-
-        private static string GetProjectPath()
-        {
-            // Adjust this method to return the correct path to your project's content root
-            var applicationBasePath = AppContext.BaseDirectory;
-            var directoryInfo = new DirectoryInfo(applicationBasePath);
-
-            while (directoryInfo != null && !directoryInfo.GetFiles("*.csproj").Any())
-            {
-                directoryInfo = directoryInfo.Parent;
-            }
-
-            if (directoryInfo == null)
-            {
-                throw new DirectoryNotFoundException("Could not find the project directory.");
-            }
-
-            return directoryInfo.FullName;
         }
     }
 }
