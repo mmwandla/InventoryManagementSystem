@@ -14,7 +14,7 @@ namespace InventoryManagementSystem.Tests
 
         public ProductsControllerTests(WebApplicationFactory<Program> factory)
         {
-           
+            _client = factory.CreateClient();
         }
 
         [Fact]
