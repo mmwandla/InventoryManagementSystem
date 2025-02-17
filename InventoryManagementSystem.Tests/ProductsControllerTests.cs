@@ -1,9 +1,5 @@
 ﻿using InventoryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Hosting;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace InventoryManagementSystem.Tests

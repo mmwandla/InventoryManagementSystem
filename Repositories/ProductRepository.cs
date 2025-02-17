@@ -20,7 +20,12 @@ namespace InventoryManagementSystem.Repositories
 
         public async Task<Product> GetByIdAsync(int id)
         {
-            return await _context.Products.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                throw new KeyNotFoundException($"Product with id {id} not found.");
+            }
+            return product;
         }
 
         public async Task AddAsync(Product product)
